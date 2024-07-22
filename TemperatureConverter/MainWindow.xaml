@@ -27,7 +27,7 @@
         
         <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
             <Label Content="Temperature" FontSize="15" Margin="7 0 0 0" />
-            <TextBox x:Name="temperatureTbox" Height="30" VerticalContentAlignment="Center" Margin="10 0 10 0"/>
+            <TextBox x:Name="temperatureTbox" PreviewTextInput="IsInputValid" Height="30" VerticalContentAlignment="Center" Margin="10 0 10 0"/>
             <Label Name="resultTbox" HorizontalAlignment="Center" FontWeight="Bold"/>
         </StackPanel>
         
