@@ -5,8 +5,42 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TemperatureConverter"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Temperature Converter" Height="450" Width="300" WindowStartupLocation="CenterScreen">
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="10"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="10"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="30"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+        
+        <Label Content="Temperature Converter" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25"/>
+        
+        <StackPanel Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3">
+            <Label Content="Temperature" FontSize="15" Margin="7 0 0 0" />
+            <TextBox x:Name="temperatureTbox" Height="30" VerticalContentAlignment="Center" Margin="10 0 10 0"/>
+            <Label Name="resultTbox" HorizontalAlignment="Center" FontWeight="Bold"/>
+        </StackPanel>
+        
+        <StackPanel Grid.Row="3" Grid.Column="1">
+            <Label Content="From:"/>
+            <ComboBox Name="fromComboBox"/>
+        </StackPanel>
 
+        <StackPanel Grid.Row="3" Grid.Column="3">
+            <Label Content="To:"/>
+            <ComboBox Name="toComboBox"/>
+        </StackPanel>
+
+        <Button Click="ConvertButton_Clicked" Content="Convert" Grid.Column="1" Grid.Row="4" Grid.ColumnSpan="3" Width="100" Height="30"/>
     </Grid>
 </Window>
