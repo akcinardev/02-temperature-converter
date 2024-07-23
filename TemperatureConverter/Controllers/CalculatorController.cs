@@ -19,21 +19,21 @@ namespace TemperatureConverter.Controllers
 			{
 				case "c":
 					if (to == "f")
-						return CelciusToFahrenheit(value);
+						return FormatResult(CelciusToFahrenheit(value));
 					else if (to == "k")
-						return CelciusToKelvin(value);
+						return FormatResult(CelciusToKelvin(value));
 					break;
 				case "f":
 					if (to == "c")
-						return FahrenheitToCelsius(value);
+						return FormatResult(FahrenheitToCelsius(value));
 					else if (to == "k")
-						return FahrenheitToKelvin(value);
+						return FormatResult(FahrenheitToKelvin(value));
 					break;
 				case "k":
 					if (to == "c")
-						return KelvinToCelsius(value);
+						return FormatResult(KelvinToCelsius(value));
 					else if (to == "f")
-						return KelvinToFahrenheit(value);
+						return FormatResult(KelvinToFahrenheit(value));
 					break;
 				default:
 					throw new ArgumentException("Invalid input");
@@ -41,40 +41,45 @@ namespace TemperatureConverter.Controllers
 			throw new ArgumentException("Invalid input");
 		}
 
-		public double CelciusToFahrenheit(double c)
+		private double CelciusToFahrenheit(double c)
 		{
 			// Celsius to Fahrenheit: F = C(9/5) + 32
-			return (c * (9 / 5)) + 32;
+			return (c * (9.0 / 5.0)) + 32.0;
 		}
 
-		public double CelciusToKelvin(double c)
+		private double CelciusToKelvin(double c)
 		{
 			// Celsius to Kelvin: K = C + 273.15
 			return c + 273.15;
 		}
 
-		public double FahrenheitToCelsius(double f)
+		private double FahrenheitToCelsius(double f)
 		{
 			// Fahrenheit to Celcius: C = (F-32) (5/9)
-			return (f - 32) * (5 / 9);
+			return (f - 32.0) * (5.0 / 9.0);
 		}
 
-		public double FahrenheitToKelvin(double f)
+		private double FahrenheitToKelvin(double f)
 		{
 			// Fahrenheit to Kelvin: K = (F-32) (5/9) + 273.15
-			return (f - 32) * (5 / 9) + 273.19;
+			return (f - 32.0) * (5.0 / 9.0) + 273.15;
 		}
 
-		public double KelvinToCelsius(double k)
+		private double KelvinToCelsius(double k)
 		{
 			// Kelvin to Celcius: C = K - 273.15
 			return k - 273.15;
 		}
 
-		public double KelvinToFahrenheit(double k)
+		private double KelvinToFahrenheit(double k)
 		{
 			// Kelvin to Fahrenheit: F = (K-273.15) (9/5) + 32
-			return (k - 273.15) * (9 / 5) + 32;
+			return (k - 273.15) * (9.0 / 5.0) + 32.0;
+		}
+
+		private double FormatResult(double result)
+		{
+			return Math.Round(result, 2);
 		}
 	}
 }
