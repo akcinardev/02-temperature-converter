@@ -11,37 +11,35 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using TemperatureConverter.Controllers;
+using TemperatureConverter.Models;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace TemperatureConverter
 {
 	public partial class MainWindow : Window
 	{
-		TemperatureController temperature = new TemperatureController();
+		TemperatureController temperatureController = new TemperatureController();
 		CalculatorController calculator = new CalculatorController();
 		public MainWindow()
 		{
 			InitializeComponent();
-			
-			temperature.BindDataToComboBox(fromComboBox);
-			temperature.BindDataToComboBox(toComboBox);
+
+			temperatureController.BindDataToComboBox(fromComboBox);
+			temperatureController.BindDataToComboBox(toComboBox);
 		}
 
 		private void ConvertButton_Clicked(object sender, RoutedEventArgs e)
 		{
-			string? fromCbox = fromComboBox.SelectedValue.ToString();
-			string? toCbox = toComboBox.SelectedValue.ToString();
+			Temperature fromTemperature = new Temperature(fromComboBox);
+			Temperature toTemperature = new Temperature(toComboBox);
 
-			string? fromTemperature = FormatTemperatureInfo(fromComboBox);
-			string? toTemperature = FormatTemperatureInfo(toComboBox);
-
-			if (!string.IsNullOrEmpty(temperatureTbox.Text) && fromCbox != "-" && toCbox != "-")
+			if (!string.IsNullOrEmpty(temperatureTbox.Text) && fromTemperature.Symbol != "-" && toTemperature.Symbol != "-")
 			{
 				try
 				{
 					double value = Double.Parse(temperatureTbox.Text);
-					double result = calculator.CalculateTemperature(value, fromCbox, toCbox);
-					resultTbox.Content = $"{value} {fromTemperature} = {result} {toTemperature}";
+					double result = calculator.CalculateTemperature(value, fromTemperature.Symbol, toTemperature.Symbol);
+					resultTbox.Content = $"{value} {fromTemperature.Name} = {result} {toTemperature.Name}";
 				}
 				catch (FormatException ex)
 				{
@@ -60,13 +58,6 @@ namespace TemperatureConverter
 		{
 			Regex regex = new Regex("[^0-9,-]+");
 			e.Handled = regex.IsMatch(e.Text);
-		}
-
-		private string? FormatTemperatureInfo(ComboBox cBox)
-		{
-			DataRowView selectedRow = (DataRowView)cBox.SelectedItem;
-			string? selectedTemperature = selectedRow["Temperature"].ToString();
-			return selectedTemperature;
 		}
 	}
 }
