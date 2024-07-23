@@ -2,20 +2,20 @@
 
 ## Overview
 
-The **Temperature Converter** is a very simple desktop application built using C# and WPF (Windows Presentation Foundation). It allows users to convert temperatures between Celsius, Fahrenheit, and Kelvin. The application features an interface with input fields for temperature values and combo boxes for choosing the temperature units.
+The **Temperature Converter** is a straightforward desktop application built using C# and WPF (Windows Presentation Foundation). It allows users to convert temperatures between Celsius, Fahrenheit, and Kelvin. The application features an intuitive interface with input fields for temperature values and combo boxes for selecting temperature units.
 
 ## Features
 
 - **Temperature Conversion**: Convert temperatures between Celsius, Fahrenheit, and Kelvin.
-- **User Interface**: UI with ComboBoxes for selecting temperature units and TextBoxes for input and output.
-- **Validation**: Input validation to ensure only valid numerical values are entered.
-- **Unit Tests**: Unit tests using xUnit and FluentAssertions to verify conversion logic.
+- **User Interface**: User-friendly UI with ComboBoxes for selecting temperature units and TextBoxes for input and output.
+- **Validation**: Input validation to ensure that only valid numerical values are entered.
+- **Unit Tests**: Comprehensive unit tests using xUnit and FluentAssertions to verify conversion logic.
 
 ## Technologies Used
 
 - **C#**: Programming language used for the application logic.
 - **WPF**: Framework used for building the user interface.
-- **FluentAssertions**: Library used for writing clear and concise assertions in unit tests.
+- **FluentAssertions**: Library for writing clear and concise assertions in unit tests.
 - **xUnit**: Testing framework used for unit testing.
 
 ### Versions
@@ -29,7 +29,7 @@ The **Temperature Converter** is a very simple desktop application built using C
    - Enter the temperature value in the input TextBox.
 
 2. **Select Units**:
-   - Use the ComboBoxes to select the unit of the temperature you are converting from and to.
+   - Use the ComboBoxes to select the unit of the temperature you are converting from and the unit you are converting to.
 
 3. **Convert**:
    - Click the "Convert" button to perform the conversion.
@@ -39,11 +39,11 @@ The **Temperature Converter** is a very simple desktop application built using C
 
 ## Unit Tests
 
-Unit tests are included to ensure the accuracy of the conversion logic. They are implemented using xUnit and FluentAssertions.
+Unit tests are included to ensure the accuracy of the conversion logic and are implemented using xUnit and FluentAssertions.
 
 ## Feedback & Contributing
 
-Since this is a very simple app to improve myself in C# **feedbacks and contributions** are very welcome! If you have suggestions for improvements or find any issues, please open an issue or submit a pull request.
+As this is a simple application created to improve my C# skills, **feedback and contributions** are highly welcomed! If you have suggestions for improvements or find any issues, please open an issue or submit a pull request.
 
 ## Contact
 
@@ -52,3 +52,6 @@ For any questions or inquiries, please contact:
 - **Email**: akcinardev@gmail.com
 - **GitHub**: [akcinardev](https://github.com/akcinardev)
 
+---
+
+Thank you for checking out the Temperature Converter!
