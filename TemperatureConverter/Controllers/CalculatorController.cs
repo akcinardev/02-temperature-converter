@@ -9,36 +9,31 @@ namespace TemperatureConverter.Controllers
 {
 	public class CalculatorController
 	{
+		private const string Celsius = "c";
+		private const string Fahrenheit = "f";
+		private const string Kelvin = "k";
 		public double CalculateTemperature(double value, string? from, string? to)
 		{
+			if (string.IsNullOrEmpty(from) || string.IsNullOrEmpty(to))
+			{
+				throw new ArgumentException("Temperature unit is null or empty!");
+			}
+
 			if (from == to)
 			{
-				return value;
+				return FormatResult(value);
 			}
-			switch (from)
+
+			return from switch
 			{
-				case "c":
-					if (to == "f")
-						return FormatResult(CelciusToFahrenheit(value));
-					else if (to == "k")
-						return FormatResult(CelciusToKelvin(value));
-					break;
-				case "f":
-					if (to == "c")
-						return FormatResult(FahrenheitToCelsius(value));
-					else if (to == "k")
-						return FormatResult(FahrenheitToKelvin(value));
-					break;
-				case "k":
-					if (to == "c")
-						return FormatResult(KelvinToCelsius(value));
-					else if (to == "f")
-						return FormatResult(KelvinToFahrenheit(value));
-					break;
-				default:
-					throw new ArgumentException("Invalid input");
-			}
-			throw new ArgumentException("Invalid input");
+				Celsius when to == Fahrenheit => FormatResult(CelciusToFahrenheit(value)),
+				Celsius when to == Kelvin => FormatResult(CelciusToKelvin(value)),
+				Fahrenheit when to == Celsius => FormatResult(FahrenheitToCelsius(value)),
+				Fahrenheit when to == Kelvin => FormatResult(FahrenheitToKelvin(value)),
+				Kelvin when to == Celsius => FormatResult(KelvinToCelsius(value)),
+				Kelvin when to == Fahrenheit => FormatResult(KelvinToFahrenheit(value)),
+				_ => throw new ArgumentException("Invalid temperature")
+			};
 		}
 
 		private double CelciusToFahrenheit(double c)
